@@ -63,23 +63,16 @@
                             </div>
                         </div>
                         @endforeach
-                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    {{$notices->links()}}
+                                </div>
+                            </div>
+                        </div>
                         <!-- End Single Item -->
                     </div>
-                    <!-- Pagination -->
-                    <div class="row">
-                        <div class="col-md-12 pagi-area">
-                            <nav aria-label="navigation">
-                                <ul class="pagination">
-                                    <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <!-- Start Sidebar -->
@@ -90,8 +83,8 @@
                                 <h4>Search</h4>
                             </div>
                             <div class="sidebar-info">
-                                <form>
-                                    <input type="text" class="form-control">
+                                <form action="{{ route('noticeSearch') }}" method="GET">
+                                    <input type="text" class="form-control"  name="search" required />
                                     <input type="submit" value="search">
                                 </form>
                             </div>

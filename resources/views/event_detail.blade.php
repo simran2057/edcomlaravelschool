@@ -68,37 +68,27 @@
                     <!-- Start Sidebar -->
                     <div class="sidebar col-md-4">
                         <aside>
-                            <div class="sidebar-item search">
-                                <div class="title">
-                                    <h4>Search</h4>
-                                </div>
-                                <div class="sidebar-info">
-                                    <form>
-                                        <input type="text" class="form-control">
-                                        <input type="submit" value="search">
-                                    </form>
-                                </div>
-                            </div>
-
                             <div class="sidebar-item recent-post">
                                 <div class="title">
                                     <h4>Recent Events</h4>
                                 </div>
+                                @foreach($events as $event)
                                 <ul>
                                     <li>
                                         <div class="thumb">
                                             <a href="#">
-                                                <img src="{{'/uploads/files/'.$event_detail->img_link}}" alt="Thumb">
+                                                <img src="{{'/uploads/files/'.$event->img_link}}" alt="Thumb">
                                             </a>
                                         </div>
                                         <div class="info">
-                                            <a href="blog.php">{{$event_detail->tittle}}</a>
+                                            <a href="blog.php">{{$event->tittle}}</a>
                                             <div class="meta-title">
-                                                <span class="post-date">{{$event_detail->date}}</span> - By <a href="#">Author</a>
+                                                <span class="post-date">{{$event->date}}</span> - By <a href="#">Author</a>
                                             </div>
                                         </div>
                                     </li>
                                 </ul>
+                                @endforeach
                             </div>
                         </aside>
                     </div>

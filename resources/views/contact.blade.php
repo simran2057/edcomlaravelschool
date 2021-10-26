@@ -74,13 +74,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                                 <div class="row">
                                     <div class="form-group comments">
                                         <textarea class="form-control" id="comments" name="details" placeholder="Message*" rows="6" ></textarea>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-md-12">
                                 <div class="row">
                                     <button type="submit" name="submit" id="submit">

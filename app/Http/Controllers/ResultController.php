@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Result;
 use Illuminate\Http\Request;
+use App\Models\Coursecat;
+
+use App\Models\SiteConfig;
+
 
 class ResultController extends Controller
 {
@@ -15,8 +19,25 @@ class ResultController extends Controller
     public function index()
     {
          $result=Result::all();
+         $result=Result::paginate(2);
         return view('admin.result.index',compact('result'));
     }
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        $sites = SiteConfig::all();
+        $categories = Coursecat::all();
+
+        // Search in the title and body columns from the posts table
+        $results=Result::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            
+            ->paginate(8);
+
+        // Return the search view with the resluts compacted
+        return view('result', compact('results', 'sites','categories'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

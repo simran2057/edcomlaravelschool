@@ -63,7 +63,7 @@ class AdmissionController extends Controller
                 'status'=>$request->get('status'),
         ]);
         $admission->save();
-        return redirect()->route('admission.index')->with('success','Admission added successfully');
+        return redirect('admissions')->with('success','Admission added successfully');
     }
 
     /**

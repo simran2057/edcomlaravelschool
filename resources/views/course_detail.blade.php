@@ -5,7 +5,7 @@
 
     @foreach ($sites as $site)
     @if ($site->site_key=='bgimage')
-    <div class="breadcrumb-area shadow dark bg-fixed text-center text-light" style="background-image:  url({{'uploads/files/'.$site->imglink}});">
+    <div class="breadcrumb-area shadow dark bg-fixed text-center text-light" style="background-image:  url({{'/uploads/files/'.$site->imglink}});">
     @endif
     @endforeach
     <div class="container">

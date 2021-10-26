@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use App\Models\Coursecat;
+
+use App\Models\SiteConfig;
 
 class BlogController extends Controller
 {
@@ -16,10 +19,27 @@ class BlogController extends Controller
     {
         if (session()->has('LoggedUser')) {
              $blog=blog::all();
+             $blog=Blog::paginate(2);
         return view('admin.blog.index',compact('blog'));
         }
 
     }
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        $sites = SiteConfig::all();
+        $categories = Coursecat::all();
+
+        // Search in the title and body columns from the posts table
+        $blogs =Blog::query()
+            ->where('tittle', 'LIKE', "%{$search}%")
+            
+            ->paginate(8);
+
+        // Return the search view with the resluts compacted
+        return view('blog', compact('blogs', 'sites','categories'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

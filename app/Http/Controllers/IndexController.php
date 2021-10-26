@@ -70,6 +70,7 @@ class IndexController extends Controller
         // $notices=Notice::where('id',$id)->first();
          $sites = SiteConfig::all();
         $notices = Notice::all();
+        $notices=Notice::paginate(2);
         return view('notice',compact('sites','notices','categories'));
     }
 
@@ -87,6 +88,7 @@ class IndexController extends Controller
     public function results()
     {
         $results = Result::all();
+        $results=Result::paginate(2);
          $sites = SiteConfig::all();
           $categories = Coursecat::all();
         return view('result',compact('sites','results','categories'));
@@ -100,27 +102,28 @@ class IndexController extends Controller
             //$courses = Course::find($id);
                 $categories = Coursecat::all();
             // return $courses;
-                $course=Course::where('id',$id)->first();
+                $courses=Course::where('c_id',$id)->paginate(5);
                 $sites = SiteConfig::all();
 
-                return view('course', compact('course', 'categories','sites'));
+                return view('course', compact('courses', 'categories','sites'));
             }
 
         public function course_detail($id)
     {
         // $course_detail=Course::where('status',1)->get();
         $course_detail = Course::find($id);
-
+        $course = Course::all();
          $categories = Coursecat::all();
          $sites = SiteConfig::all();
 
-        return view('course_detail', compact('course_detail','sites','categories'));
+        return view('course_detail', compact('course','course_detail','sites','categories'));
     }
 
 
     public function teacher()
     {
         $teachers = Teacher::all();
+        $teachers=Teacher::paginate(3);
         $sites = SiteConfig::all();
   $categories = Coursecat::all();
         return view('teacher',compact('sites','teachers','categories'));
@@ -139,6 +142,7 @@ class IndexController extends Controller
     public function news()
     {
         $newses = News::all();
+        $newses=News::paginate(2);
         $sites = SiteConfig::all();
   $categories = Coursecat::all();
         return view('news',compact('sites','categories','newses'));
@@ -158,6 +162,7 @@ class IndexController extends Controller
     public function event()
     {
         $events = Event::all();
+        $events=Event::paginate(2);
         $sites = SiteConfig::all();
   $categories = Coursecat::all();
         return view('event',compact('sites','categories','events'));
@@ -166,10 +171,11 @@ class IndexController extends Controller
 
     public function event_detail($id)
     {
+        $events = Event::all();
         $event_detail= Event::find($id);
         $sites = SiteConfig::all();
         $categories = Coursecat::all();
-        return view('event_detail', compact('event_detail','sites','categories'));
+        return view('event_detail', compact('event_detail','sites','categories','events'));
     }
 
       public function news_detail($id)
@@ -184,6 +190,7 @@ class IndexController extends Controller
     public function blog()
     {
         $blogs = Blog::all();
+        $blogs=Blog::paginate(1);
         $sites = SiteConfig::all();
   $categories = Coursecat::all();
         return view('blog',compact('sites','categories','blogs'));

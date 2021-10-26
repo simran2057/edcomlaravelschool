@@ -4,7 +4,7 @@
     ============================================= -->
      @foreach ($sites as $site)
     @if ($site->site_key=='bgimage')
-    <div class="breadcrumb-area shadow dark bg-fixed text-center text-light" style="background-image:  url({{'uploads/files/'.$site->imglink}});">
+    <div class="breadcrumb-area shadow dark bg-fixed text-center text-light" style="background-image:  url({{'/uploads/files/'.$site->imglink}});">
     @endif
     @endforeach
         <div class="container">
@@ -33,7 +33,10 @@
                 </div>
                 @endif
                 <!-- Start Course Info -->
+                
+                
                 <div class="col-md-9">
+                    @foreach ($courses as $course)
                      <div class="top-course-items">
                         <!-- Single Item -->
                         <div class="col-md-4 col-sm-6 equal-height"><a href="{{ url('course_detail/'.$course->id) }}">
@@ -68,6 +71,7 @@
                         <!-- Single Item -->
                         
                      </div>
+                     @endforeach
                 </div>
                 <!-- End Course Info -->
 
@@ -79,9 +83,9 @@
                                 <h4>Search</h4>
                             </div>
                             <div class="sidebar-info">
-                                <form>
-                                    <input type="text" class="form-control">
-                                    
+                                <form action="{{ route('courseSearch') }}" method="GET">
+                                    <input type="text" class="form-control"  name="search" required />
+                                    <input type="submit" value="search">
                                 </form>
                             </div>
                         </div>

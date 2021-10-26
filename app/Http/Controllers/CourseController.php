@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\Coursecat;
 use Illuminate\Http\Request;
 use App\Models\Admin_user;
+use App\Models\SiteConfig;
 
 class CourseController extends Controller
 {
@@ -17,8 +18,24 @@ class CourseController extends Controller
     public function index()
     {
          $course=Course::all();
+         $course=Course::paginate(2);
         $coursecat=Coursecat::all();
         return view('admin.course.index',compact('course','coursecat'));
+    }
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        $sites = SiteConfig::all();
+        $categories = Coursecat::all();
+
+        // Search in the title and body columns from the posts table
+        $course =Course::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            
+            ->paginate(8);
+
+        // Return the search view with the resluts compacted
+        return view('course', compact('course', 'sites','categories'));
     }
 
     /**
@@ -30,7 +47,9 @@ class CourseController extends Controller
     {    $coursecat=Coursecat::all();
          return view('admin.course.create',compact('coursecat'));
     }
-
+    public function show()
+    {   
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -118,5 +137,10 @@ class CourseController extends Controller
          $course->delete();
         return redirect('course')->with('delete', 'Deleted successfully');
     }
+
+    // public function show(course $course)
+    // {
+    //      return view('admin.course.show',compact('course'));
+    // }
 
 }

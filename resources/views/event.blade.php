@@ -30,13 +30,13 @@
                     <!-- Start Sidebar -->
                     <div class="sidebar col-md-4" >
                         <aside>
-                            <div class="sidebar-item search" style="border:none;">
+                            <div class="sidebar-item search">
                                 <div class="title">
                                     <h4>Search</h4>
                                 </div>
                                 <div class="sidebar-info">
-                                    <form>
-                                        <input type="text" class="form-control">
+                                    <form action="{{ route('eventSearch') }}" method="GET">
+                                        <input type="text" class="form-control"  name="search" required />
                                         <input type="submit" value="search">
                                     </form>
                                 </div>
@@ -84,7 +84,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                {{$events->links()}}
                             </div>
                         </div>
                     </div>

@@ -76,17 +76,7 @@
                     <!-- Start Sidebar -->
                     <div class="sidebar col-md-4">
                         <aside>
-                            <div class="sidebar-item search">
-                                <div class="title">
-                                    <h4>Search</h4>
-                                </div>
-                                <div class="sidebar-info">
-                                    <form>
-                                        <input type="text" class="form-control">
-                                        <input type="submit" value="search">
-                                    </form>
-                                </div>
-                            </div> <div class="sidebar-item recent-post">
+                            <div class="sidebar-item recent-post">
                                 <div class="title">
                                     <h4>Recent Blogs</h4>
                                 </div>

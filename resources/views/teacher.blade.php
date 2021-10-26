@@ -45,6 +45,13 @@
                     </div>
                     <!-- End Single item -->
                    @endforeach
+                   <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            {{$teachers->links()}}
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>

@@ -67,6 +67,13 @@
  @endforeach
 																</tfoot>
 														</table>
+														<div class="row">
+															<div class="col-md-12">
+																<div class="text-center">
+																	{{$notice->links()}}
+																</div>
+															</div>
+														</div>
 													</div>
 													<!-- /.card-body -->
 												</div>

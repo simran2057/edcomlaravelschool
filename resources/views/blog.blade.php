@@ -5,7 +5,7 @@
     ============================================= -->
     @foreach ($sites as $site)
     @if ($site->site_key=='bgimage')
-    <div class="breadcrumb-area shadow dark bg-fixed text-center text-light" style="background-image: url({{'uploads/files/'.$site->imglink}});">
+    <div class="breadcrumb-area shadow dark bg-fixed text-center text-light" style="background-image: url({{'/uploads/files/'.$site->imglink}});">
         @endif
         @endforeach  
         <div class="container">
@@ -44,7 +44,7 @@
                                 <div class="item">
                                     <div class="thumb">
                                         <a href="{{url('blog_detail/'.$blog->id)}}">
-                                            <img src="{{'uploads/files/'.$blog->img_link}}" alt="Thumb">
+                                            <img src="{{'/uploads/files/'.$blog->img_link}}" alt="Thumb">
                                         </a>
                                     </div>
                                     <div class="info">
@@ -62,13 +62,19 @@
                             </div>
                             @endforeach
                             <!-- End Single Item -->
-
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-center">
+                                        {{$blogs->links()}}
+                                    </div>
+                                </div>
+                            </div>
                             
                         </div>
                         <!-- End Blog Items -->
 
                         <!-- Pagination -->
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-md-12 pagi-area">
                                 <nav aria-label="navigation">
                                     <ul class="pagination">
@@ -80,7 +86,7 @@
                                     </ul>
                                 </nav>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <!-- Start Sidebar -->
@@ -91,8 +97,8 @@
                                     <h4>Search</h4>
                                 </div>
                                 <div class="sidebar-info">
-                                    <form>
-                                        <input type="text" class="form-control">
+                                    <form action="{{ route('blogSearch') }}" method="GET">
+                                        <input type="text" class="form-control"  name="search" required />
                                         <input type="submit" value="search">
                                     </form>
                                 </div>
@@ -106,7 +112,7 @@
                                     <li>
                                         <div class="thumb">
                                             <a href="{{url('blog_detail/'.$blog->id)}}">
-                                                <img src="{{'uploads/files/'.$blog->img_link}}" alt="Thumb">
+                                                <img src="{{'/uploads/files/'.$blog->img_link}}" alt="Thumb">
                                             </a>
                                         </div>
                                         <div class="info">

@@ -29,7 +29,7 @@
                                         <p data-animation="animated slideInLeft">
                                             {{$slider->text}}
                                         </p>
-                                        <a data-animation="animated slideInUp" class="btn btn-theme effect btn-md" href="{{'aboutus'}}">Learn more</a>
+                                        <a data-animation="animated slideInUp" class="btn btn-theme effect btn-md" href="{{'aboutus'}}">{{$slider->btn}}</a>
                                     </div>
                                 </div>
                             </div>
